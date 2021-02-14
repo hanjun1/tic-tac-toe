@@ -8,14 +8,17 @@ let players = {
 }
 let board = [];
 let player1Turn = true;
+let messageArr = ['\'O\' Turn', '\'X\' Turn', 'Tie Game!', '\'O\' Won!', '\'X\' Won!'];
 let gameFinished = false;
-
+let gameStateArr = ['tie', 'X', 'O'];
+let gameState = '';
+let messageBox = '';
 
 /*----- cached element references -----*/
 let myGrid = document.getElementById('board');
-let gameState = document.getElementById('message');
 let squares = document.querySelectorAll('.square');
 let resetBtn = document.getElementById('reset');
+let message = document.querySelector('.message');
 
 
 /*----- event listeners -----*/
@@ -32,6 +35,7 @@ myGrid.addEventListener('click', (e) => {
         player1Turn = true;
     }
     if (checkWinner(coord) || checkTie()) gameFinished = true;
+    updateMessage();
     render();
 });
 
@@ -39,7 +43,6 @@ reset.addEventListener('click', (e) => {
     board = [];
     gameFinished = false;
     initializeBoard(board);
-    console.log(board);
     render();
 });
 
@@ -53,6 +56,8 @@ function initializeBoard(board) {
         }
         board.push(row);
     }
+    updateMessage();
+    render();
 }
 
 function convertIdToCoordinate(id) {
@@ -66,6 +71,7 @@ function convertIdToCoordinate(id) {
 }
 
 function render() {
+    renderMessage();
     renderBoard();
 }
 
@@ -76,9 +82,17 @@ function renderBoard() {
     });
 }
 
+function renderMessage() {
+    message.textContent = messageBox;
+}
+
 function checkWinner(coord) {
     let player = board[coord[0]][coord[1]];
-    return checkHorizontal(coord, player) || checkVertical(coord, player) || checkDiagonal(player);
+    if (checkHorizontal(coord, player) || checkVertical(coord, player) || checkDiagonal(player)) {
+        gameState = player;
+        return true;
+    }
+    return false;
 }
 
 function checkHorizontal(coord, player) {
@@ -115,16 +129,28 @@ function checkTie() {
             if (board[i][j] === '') return false;
         }
     }
+    gameState = gameStateArr[0];
     return true;
+}
+
+function updateMessage() {
+    if (!gameFinished) {
+        if (player1Turn) messageBox = messageArr[0];
+        else messageBox = messageArr[1];
+    } else {
+        switch (gameState) {
+            case 'X':
+                messageBox = messageArr[4];
+                break;
+            case 'O':
+                messageBox = messageArr[3];
+                break;
+            case 'tie':
+                messageBox = messageArr[2];
+                break;
+        }
+    }
 }
 
 initializeBoard(board);
 renderBoard();
-
-// -----------------------------
-const table = document.querySelector('table');
-table.addEventListener('click', (e) => {
-    let column = e.target.cellIndex;
-    let row = e.target.parentElement.rowIndex;
-    console.log(row);
-});
