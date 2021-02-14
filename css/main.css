@@ -1,6 +1,20 @@
+/* 
+CSS TABLE OF CONTENTS:
+1.0 - GENERAL STYLES
+2.0 - BODY
+*/
+
+/* 1.0 - GENERAL STYLES */
+html {
+    background-color: black;
+    color: white;
+    font-family: 'Permanent Marker', cursive;
+}
+
 h1 {
-    font-size: 50px;
+    font-size: 90px;
     text-align: center;
+    margin: 30px;
 }
 
 p {
@@ -8,23 +22,50 @@ p {
     text-align: center;
 }
 
+/* 2.0 - BODY */
+
+.message {
+    margin: 30px;
+}
+
 #board {
+    width: 350px;
+    height: 350px;
     display: grid;
     margin-left: auto;
     margin-right: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .square {
-    display: inline-block;
-    border: 1px solid black;
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    line-height: 100px;
-    vertical-align: top;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+}
+
+[id="1"], [id="4"], [id="7"] {
+    border-right: 4px solid white;
+    border-left: 4px solid white;
+}
+
+[id="3"], [id="4"], [id="5"] {
+    border-top: 4px solid white;
+    border-bottom: 4px solid white;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
 }
 
 #reset {
-    display: block;
+    background-color: black;
+    border: 3px solid white;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 25px;
+    color: white;
 }
-

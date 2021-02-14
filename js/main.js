@@ -8,7 +8,7 @@ let players = {
 }
 let board = [];
 let player1Turn = true;
-let messageArr = ['\'O\' Turn', '\'X\' Turn', 'Tie Game!', '\'O\' Won!', '\'X\' Won!'];
+let messageArr = ['Player \'O\' Turn', 'Player \'X\' Turn', 'Tie Game!', 'Player \'O\' Won!', 'Player \'X\' Won!'];
 let gameFinished = false;
 let gameStateArr = ['tie', 'X', 'O'];
 let gameState = '';
@@ -152,5 +152,11 @@ function updateMessage() {
     }
 }
 
-initializeBoard(board);
-renderBoard();
+function startGame() {
+    initializeBoard(board);
+    render();
+}
+
+/*-- Start Game --*/
+startGame();
+
