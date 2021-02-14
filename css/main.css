@@ -1,0 +1,19 @@
+.square {
+    display: inline-block;
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: top;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+td {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+}
