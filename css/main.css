@@ -15,11 +15,13 @@ h1 {
     font-size: 90px;
     text-align: center;
     margin: 30px;
+    margin-top: 125px;
 }
 
 p {
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
+    margin: 30px;
 }
 
 /* 2.0 - BODY */
@@ -45,14 +47,33 @@ p {
     font-size: 75px;
 }
 
+.hover {
+    color: rgba(255,255,255,0.5);
+}
+
+#win {
+    animation: textgrowth 1s infinite alternate;
+}
+
+@keyframes textgrowth {
+    0% {
+        font-size: 75px;
+    }
+    100% {
+        font-size: 125px;
+    }
+}
+
 [id="1"], [id="4"], [id="7"] {
     border-right: 4px solid white;
     border-left: 4px solid white;
+    border-radius: 5px;
 }
 
 [id="3"], [id="4"], [id="5"] {
     border-top: 4px solid white;
     border-bottom: 4px solid white;
+    border-radius: 5px;
 }
 
 .button-container {

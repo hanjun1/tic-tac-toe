@@ -1,3 +1,5 @@
+// highlight when win
+
 /*----- constants -----*/
 const BOARD_LENGTH = 3;
 
@@ -27,6 +29,7 @@ myGrid.addEventListener('click', (e) => {
     let coord = convertIdToCoordinate(e.target.id);
     if (gameFinished) return;
     if (board[coord[0]][coord[1]] !== '') return;
+    e.target.classList.remove('hover');
     if (player1Turn) {
         board[coord[0]][coord[1]] = players.one;
         player1Turn = false;
@@ -37,6 +40,32 @@ myGrid.addEventListener('click', (e) => {
     if (checkWinner(coord) || checkTie()) gameFinished = true;
     updateMessage();
     render();
+});
+
+myGrid.addEventListener('mouseover', (e) => {
+    let coord = convertIdToCoordinate(e.target.id);
+    if (gameFinished) return;
+    if (e.target.id === 'board') return;
+    if (board[coord[0]][coord[1]] !== '') return;
+    e.target.classList.add('hover');
+    if (player1Turn) {
+        e.target.textContent = players.one;
+    } else {
+        e.target.textContent = players.two;
+    }
+});
+
+myGrid.addEventListener('mouseout', (e) => {
+    let coord = convertIdToCoordinate(e.target.id);
+    if (gameFinished) return;
+    if (e.target.id === 'board') return;
+    if (board[coord[0]][coord[1]] !== '') return;
+    e.target.classList.remove('hover');
+    if (player1Turn) {
+        e.target.textContent = "";
+    } else {
+        e.target.textContent = "";
+    }
 });
 
 reset.addEventListener('click', (e) => {
