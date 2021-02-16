@@ -51,19 +51,6 @@ p {
     color: rgba(255,255,255,0.5);
 }
 
-#win {
-    animation: textgrowth 1s infinite alternate;
-}
-
-@keyframes textgrowth {
-    0% {
-        font-size: 75px;
-    }
-    100% {
-        font-size: 125px;
-    }
-}
-
 [id="1"], [id="4"], [id="7"] {
     border-right: 4px solid white;
     border-left: 4px solid white;
