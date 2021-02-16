@@ -181,7 +181,7 @@ function updateMessage() {
 }
 
 function playSound() {
-    const clickSound = new Audio('/media/click.wav');
+    const clickSound = new Audio('media/click.wav');
     clickSound.play();
 }
 
