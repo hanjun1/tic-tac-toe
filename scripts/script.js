@@ -28,6 +28,7 @@ myGrid.addEventListener('click', (e) => {
     if (gameFinished) return;
     if (board[coord[0]][coord[1]] !== '') return;
     e.target.classList.remove('hover');
+    playSound();
     if (player1Turn) {
         board[coord[0]][coord[1]] = players.one;
         player1Turn = false;
@@ -177,6 +178,11 @@ function updateMessage() {
                 break;
         }
     }
+}
+
+function playSound() {
+    const clickSound = new Audio('/media/click.wav');
+    clickSound.play();
 }
 
 function startGame() {
