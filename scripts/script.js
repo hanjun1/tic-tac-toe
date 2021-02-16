@@ -1,5 +1,3 @@
-// highlight when win
-
 /*----- constants -----*/
 const BOARD_LENGTH = 3;
 
